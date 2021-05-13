@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "754784507400",
+    "project_id": "e-dr-6637d",
+    "storage_bucket": "e-dr-6637d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754784507400:android:d9714ad4bfbf7c73c563bd",
+        "android_client_info": {
+          "package_name": "com.cmadushan.android.dr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754784507400-ig4v9g209qc1418tjndujo6hv8u6up99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxLHPC8evL-6wiUvnVIb2M1RPITYGjyKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754784507400-ig4v9g209qc1418tjndujo6hv8u6up99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
