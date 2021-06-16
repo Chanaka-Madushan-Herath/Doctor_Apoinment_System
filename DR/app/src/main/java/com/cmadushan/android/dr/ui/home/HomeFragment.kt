@@ -6,11 +6,10 @@ import android.util.Log.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.cmadushan.android.dr.MainActivity
 import com.cmadushan.android.dr.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,8 +17,10 @@ import com.google.firebase.storage.FirebaseStorage
 
 
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
+
   var db = FirebaseFirestore.getInstance()
     var doctorlist = arrayListOf<String>()
+lateinit var selectedDocId : String
 
   override fun onCreateView(
           inflater: LayoutInflater,
@@ -30,6 +31,9 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
     arguments?.let {
       val args =HomeFragmentArgs.fromBundle(it)
       asignUserDetails(args.id)
+        view?.findViewById<Button>(R.id.btnChanel)?.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_home_to_sessionListFragment)
+        }
     }
     return root
   }
@@ -44,6 +48,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
                         if (name != null && email != null ) {
                             getImageLink(id, name, email)
                         }
+                        doctorlist.add(" ")
                         db.collection("doctors")
                                 .get()
                                 .addOnSuccessListener { result ->
@@ -81,8 +86,25 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val item: String =  parent?.getItemAtPosition(position).toString()
-
-        Toast.makeText(parent?.context, "Selected: $item", Toast.LENGTH_LONG).show()
+        if (item == " "){
+            selectedDocId=" "
+                Toast.makeText(parent?.context, "Please select a doctor", Toast.LENGTH_LONG).show()
+        }
+        else{
+            db.collection("doctors").orderBy("Name")
+                    .startAt(item)
+                    .endAt(item + '\uf8ff')
+                    .get()
+                    .addOnSuccessListener { result ->
+                        for (document in result) {
+                            selectedDocId=document.id
+                            d(TAG,"${document.id}" )
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        d(TAG, "Error getting documents.", exception)
+                    }
+        }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

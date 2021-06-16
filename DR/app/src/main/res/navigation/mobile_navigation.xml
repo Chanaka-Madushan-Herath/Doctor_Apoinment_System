@@ -13,6 +13,9 @@
         <argument
             android:name="Id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_nav_home_to_sessionListFragment"
+            app:destination="@id/sessionListFragment" />
     </fragment>
 
     <fragment
@@ -48,4 +51,9 @@
         android:name="com.cmadushan.android.dr.ui.gallery.GalleryFragment"
         android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/sessionListFragment"
+        android:name="com.cmadushan.android.dr.ui.sessionlist.SessionListFragment"
+        android:label="fragment_session_list"
+        tools:layout="@layout/fragment_session_list" />
 </navigation>
