@@ -55,5 +55,9 @@
         android:id="@+id/sessionListFragment"
         android:name="com.cmadushan.android.dr.ui.sessionlist.SessionListFragment"
         android:label="fragment_session_list"
-        tools:layout="@layout/fragment_session_list" />
+        tools:layout="@layout/fragment_session_list" >
+        <argument
+            android:name="DoctorId"
+            app:argType="string" />
+    </fragment>
 </navigation>

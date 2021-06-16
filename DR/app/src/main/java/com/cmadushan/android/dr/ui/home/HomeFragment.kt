@@ -28,15 +28,23 @@ lateinit var selectedDocId : String
           savedInstanceState: Bundle?
   ): View? {
     val root = inflater.inflate(R.layout.fragment_home, container, false)
-    arguments?.let {
-      val args =HomeFragmentArgs.fromBundle(it)
-      asignUserDetails(args.id)
+
+      arguments?.let {
+          val args =HomeFragmentArgs.fromBundle(it)
+          asignUserDetails(args.id)
+      }
+      return root
+  }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         view?.findViewById<Button>(R.id.btnChanel)?.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_home_to_sessionListFragment)
+            doctorlist.clear()
+            val action = HomeFragmentDirections.actionNavHomeToSessionListFragment(selectedDocId)
+            findNavController().navigate(action)
+
         }
     }
-    return root
-  }
     private fun asignUserDetails(id: String){
         val docRef = db.collection("users").document(id)
         docRef.get()
