@@ -129,7 +129,7 @@ class RegisterFragment : Fragment()  {
         db.collection("users").document(id)
             .set(user)
             .addOnSuccessListener { documentReference -> Log.d("firestore", "DocumentSnapshot added with ID: " + id)
-                uploadImage(id,email)
+                uploadImage(id)
             }
             .addOnFailureListener { e -> Log.w("firestore", "Error adding document", e) }
     }
@@ -144,28 +144,18 @@ class RegisterFragment : Fragment()  {
 
         }
     }
-    private fun uploadImage(id:String, email: String) {
+    private fun uploadImage(id:String) {
         if (selectedPhotoUri== null)return
-        val filename =UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+        val ref = FirebaseStorage.getInstance().getReference("/images/$id")
         ref.putFile(selectedPhotoUri!!)
                 .addOnSuccessListener {
                     Log.d("register","image uploaded")
                     ref.downloadUrl.addOnSuccessListener {
                         Log.d("registr","link..."+it)
-                        saveToDatabase(id,email,it.toString())
+
                     }
                 }
 
-    }
-    private fun saveToDatabase(id: String,email:String,profileImageUrl: String) {
-        val uid= id
-        val ref =FirebaseDatabase.getInstance().getReference("/users/$uid")
-        val user=  user(uid,email,profileImageUrl)
-        ref.setValue(user)
-                .addOnSuccessListener {
-                    Log.d("register","add to database")
-                }
     }
     override fun onStart() {
         super.onStart()
