@@ -43,7 +43,7 @@ lateinit var selectedDocId : String
         getDoctorList()
         createList()
         view?.findViewById<Button>(R.id.Chanelbtn)?.setOnClickListener {
-            val action = HomeFragmentDirections.actionNavHomeToSessionListFragment("jEv2s2CV8EfxMZask2fy")
+            val action = HomeFragmentDirections.actionNavHomeToSessionListFragment(selectedDocId)
             findNavController().navigate(action)
 
         }
