@@ -35,8 +35,9 @@ class SessionListFragment : Fragment() {
                     val dname = document.getString("Name")
                     val specialization = document.getString("Specialization")
                     val hospital = document.getString("Hospital")
-                    view?.findViewById<TextView>(R.id.dname)?.text =dname
-                        view?.findViewById<TextView>(R.id.specialization)?.text = specialization
+                    view?.findViewById<TextView>(R.id.dname)?.text = "Dr. $dname"
+                        view?.findViewById<TextView>(R.id.specialization)?.text =
+                            "( $specialization )"
                     view?.findViewById<TextView>(R.id.hospital)?.text = hospital
                 }
             }
