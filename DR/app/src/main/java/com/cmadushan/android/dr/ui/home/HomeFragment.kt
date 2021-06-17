@@ -7,12 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import com.cmadushan.android.dr.MainActivity
 import com.cmadushan.android.dr.R
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 
 
@@ -33,14 +34,16 @@ lateinit var selectedDocId : String
           val args =HomeFragmentArgs.fromBundle(it)
           asignUserDetails(args.id)
       }
+
       return root
   }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view?.findViewById<Button>(R.id.btnChanel)?.setOnClickListener {
-            doctorlist.clear()
-            val action = HomeFragmentDirections.actionNavHomeToSessionListFragment(selectedDocId)
+        getDoctorList()
+        createList()
+        view?.findViewById<Button>(R.id.Chanelbtn)?.setOnClickListener {
+            val action = HomeFragmentDirections.actionNavHomeToSessionListFragment("jEv2s2CV8EfxMZask2fy")
             findNavController().navigate(action)
 
         }
@@ -56,31 +59,36 @@ lateinit var selectedDocId : String
                         if (name != null && email != null ) {
                             getImageLink(id, name, email)
                         }
-                        doctorlist.add(" ")
-                        db.collection("doctors")
-                                .get()
-                                .addOnSuccessListener { result ->
-                                    for (document in result) {
-                                        val docName=document.getString("Name")
-                                        doctorlist.add(docName.toString())
-                                    }
-                                    val spinner =view?.findViewById<Spinner>(R.id.doctorsSpinner)
-                                    spinner?.onItemSelectedListener = this
-                                   val dataAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, doctorlist)
-                                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                    spinner?.adapter = dataAdapter
-                                    d(TAG, doctorlist.toString())
-                                }
-                                .addOnFailureListener { exception ->
-                                    d(TAG, "Error getting documents.", exception)
-                                }
-
                     } else {
                         d(TAG, "No such document")
                     }
                 }
                 .addOnFailureListener { exception ->
                     d(TAG, "get failed with ", exception)
+                }
+    }
+    private fun createList(){
+        val spinner =view?.findViewById<Spinner>(R.id.doctorsSpinner)
+        spinner?.onItemSelectedListener = this
+        val dataAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, doctorlist)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner?.adapter = dataAdapter
+    }
+    private fun getDoctorList(){
+
+        doctorlist.clear()
+        doctorlist.add(" ")
+        db.collection("doctors") .orderBy("Name", Query.Direction.ASCENDING)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        val docName=document.getString("Name")
+                        doctorlist.add(docName.toString())
+                    }
+                    d(TAG, doctorlist.toString())
+                }
+                .addOnFailureListener { exception ->
+                    d(TAG, "Error getting documents.", exception)
                 }
     }
 
@@ -92,6 +100,7 @@ lateinit var selectedDocId : String
                     }
         }
 
+
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val item: String =  parent?.getItemAtPosition(position).toString()
         if (item == " "){
@@ -99,6 +108,7 @@ lateinit var selectedDocId : String
                 Toast.makeText(parent?.context, "Please select a doctor", Toast.LENGTH_LONG).show()
         }
         else{
+
             db.collection("doctors").orderBy("Name")
                     .startAt(item)
                     .endAt(item + '\uf8ff')

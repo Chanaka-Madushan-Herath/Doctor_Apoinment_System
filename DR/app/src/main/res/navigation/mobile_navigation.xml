@@ -59,5 +59,16 @@
         <argument
             android:name="DoctorId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_sessionListFragment_to_bookSessionFragment"
+            app:destination="@id/bookSessionFragment" />
+        <action
+            android:id="@+id/action_sessionListFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
+    <fragment
+        android:id="@+id/bookSessionFragment"
+        android:name="com.cmadushan.android.dr.ui.bookSession.BookSessionFragment"
+        android:label="fragment_book_session"
+        tools:layout="@layout/fragment_book_session" />
 </navigation>
