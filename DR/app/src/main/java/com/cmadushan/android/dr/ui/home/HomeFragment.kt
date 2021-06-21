@@ -53,7 +53,6 @@ lateinit var selectedDocId : String
         docRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        d(TAG, "DocumentSnapshot data: ${document.data}")
                         val name =document.getString("Name")
                         val email =document.getString("Email")
                         if (name != null && email != null ) {
@@ -85,7 +84,6 @@ lateinit var selectedDocId : String
                         val docName=document.getString("Name")
                         doctorlist.add(docName.toString())
                     }
-                    d(TAG, doctorlist.toString())
                 }
                 .addOnFailureListener { exception ->
                     d(TAG, "Error getting documents.", exception)
@@ -116,7 +114,6 @@ lateinit var selectedDocId : String
                     .addOnSuccessListener { result ->
                         for (document in result) {
                             selectedDocId=document.id
-                            d(TAG,"${document.id}" )
                         }
                     }
                     .addOnFailureListener { exception ->
