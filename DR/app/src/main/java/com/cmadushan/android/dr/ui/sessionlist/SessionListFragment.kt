@@ -12,16 +12,15 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cmadushan.android.dr.R
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
-import java.text.SimpleDateFormat
 import java.util.*
 
 
 class SessionListFragment : Fragment() {
     private val args by navArgs<SessionListFragmentArgs>()
     var db = FirebaseFirestore.getInstance()
-    private var timeList= arrayListOf<String>()
-    private var dateList= arrayListOf<String>()
+    private var timestampList = arrayListOf<Timestamp>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,20 +57,14 @@ class SessionListFragment : Fragment() {
         db.collection("doctors").document(args.doctorId).collection("Times")
             .get()
             .addOnSuccessListener { result ->
+                timestampList.clear()
                 for (document in result) {
                     val timestamp = document.getTimestamp("Time")
-                    val milliseconds = timestamp!!.seconds * 1000 + timestamp.nanoseconds / 1000000
-                    val dateFormat = SimpleDateFormat("yyyy/MM/dd")
-                    val getDate = Date(milliseconds)
-                    val date = dateFormat.format(getDate).toString()
-                    val timeFormat = SimpleDateFormat("HH:mm")
-                    val getTime = Date(milliseconds)
-                    val time = timeFormat.format(getTime).toString()
-                    dateList.add(date)
-                    timeList.add(time)
-
+                    if (timestamp != null) {
+                        timestampList.add(timestamp)
+                    }
                 }
-                val adapter =CustomAdapter(dateList,timeList)
+                val adapter =CustomAdapter(timestampList,args.doctorId)
                 val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
                 recyclerView?.adapter =adapter
                 recyclerView?.layoutManager = LinearLayoutManager(context)

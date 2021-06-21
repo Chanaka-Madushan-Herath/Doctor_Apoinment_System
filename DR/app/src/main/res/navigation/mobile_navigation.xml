@@ -70,5 +70,9 @@
         android:id="@+id/bookSessionFragment"
         android:name="com.cmadushan.android.dr.ui.bookSession.BookSessionFragment"
         android:label="fragment_book_session"
-        tools:layout="@layout/fragment_book_session" />
+        tools:layout="@layout/fragment_book_session" >
+        <argument
+            android:name="details"
+            app:argType="com.cmadushan.android.dr.ui.sessionlist.SessionDetails" />
+    </fragment>
 </navigation>

@@ -1,19 +1,28 @@
 package com.cmadushan.android.dr.ui.sessionlist
 
+import android.content.ContentValues.TAG
+import android.os.Bundle
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.cmadushan.android.dr.R
+import com.cmadushan.android.dr.ui.bookSession.BookSessionFragment
+import com.google.firebase.Timestamp
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-class CustomAdapter(private val dateList: List<String>,private val timeList: List<String>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val timestampList: List<Timestamp>, private val doctorId: String) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val dateview: TextView = view.findViewById(R.id.date)
         val timeView:TextView =view.findViewById(R.id.time)
+        val chanel:Button=view.findViewById(R.id.ChanelButton)
 
     }
 
@@ -26,11 +35,24 @@ class CustomAdapter(private val dateList: List<String>,private val timeList: Lis
     }
 
     override fun onBindViewHolder(viewHolder: CustomAdapter.ViewHolder, position: Int) {
+        val timeStamp=timestampList[position]
+        val milliseconds = timeStamp.seconds * 1000 + timeStamp.nanoseconds / 1000000
+        val dateFormat = SimpleDateFormat("yyyy/MM/dd")
+        val getDate = Date(milliseconds)
+        val date = dateFormat.format(getDate).toString()
+        val timeFormat = SimpleDateFormat("HH:mm")
+        val getTime = Date(milliseconds)
+        val time = timeFormat.format(getTime).toString()
 
-        viewHolder.dateview.text = dateList[position]
-        viewHolder.timeView.text=timeList[position]
+        viewHolder.dateview.text = date
+        viewHolder.timeView.text=time
+        viewHolder.chanel.setOnClickListener {
+            val details= SessionDetails(doctorId,timeStamp)
+            val action= SessionListFragmentDirections.actionSessionListFragmentToBookSessionFragment(details)
+           viewHolder.dateview. findNavController().navigate(action)
+        }
     }
 
-    override fun getItemCount() = dateList.size
+    override fun getItemCount() = timestampList.size
 
 }
