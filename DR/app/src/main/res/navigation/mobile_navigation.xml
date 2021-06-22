@@ -74,5 +74,8 @@
         <argument
             android:name="details"
             app:argType="com.cmadushan.android.dr.ui.sessionlist.SessionDetails" />
+        <action
+            android:id="@+id/action_bookSessionFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 </navigation>

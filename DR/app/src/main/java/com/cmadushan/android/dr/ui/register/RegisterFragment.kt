@@ -119,7 +119,6 @@ class RegisterFragment : Fragment()  {
     fun addUser(id: String,name: String, email: String, password: String, tp: String, address: String){
 
         val user: MutableMap<String, Any> = HashMap()
-        user["Id"]=id
         user["Name"] =  name
         user["Email"] =  email
         user["Password"] = password
