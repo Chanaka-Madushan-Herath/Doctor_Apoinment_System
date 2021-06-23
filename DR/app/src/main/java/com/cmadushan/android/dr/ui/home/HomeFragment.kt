@@ -42,11 +42,16 @@ lateinit var selectedDocId : String
         super.onViewCreated(view, savedInstanceState)
         getDoctorList()
         createList()
-        view?.findViewById<Button>(R.id.Chanelbtn)?.setOnClickListener {
-            val action = HomeFragmentDirections.actionNavHomeToSessionListFragment(selectedDocId)
-            findNavController().navigate(action)
-
+            view?.findViewById<Button>(R.id.Chanelbtn)?.setOnClickListener {
+                if (selectedDocId == "empty"){
+                    Toast.makeText( context,"Please select a doctor", Toast.LENGTH_SHORT).show()
+                }else{
+                val action = HomeFragmentDirections.actionNavHomeToSessionListFragment(selectedDocId)
+                findNavController().navigate(action)
+                    selectedDocId = "empty"
+            }
         }
+
     }
     private fun asignUserDetails(id: String){
         val docRef = db.collection("users").document(id)
@@ -101,30 +106,28 @@ lateinit var selectedDocId : String
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val item: String =  parent?.getItemAtPosition(position).toString()
-        if (item == " "){
-            selectedDocId=" "
-                Toast.makeText(parent?.context, "Please select a doctor", Toast.LENGTH_LONG).show()
-        }
-        else{
-
+        if (item != " ") {
             db.collection("doctors").orderBy("Name")
-                    .startAt(item)
-                    .endAt(item + '\uf8ff')
-                    .get()
-                    .addOnSuccessListener { result ->
-                        for (document in result) {
-                            selectedDocId=document.id
-                        }
+                .startAt(item)
+                .endAt(item + '\uf8ff')
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        selectedDocId = document.id
                     }
-                    .addOnFailureListener { exception ->
-                        d(TAG, "Error getting documents.", exception)
-                    }
+                }
+                .addOnFailureListener { exception ->
+                    d(TAG, "Error getting documents.", exception)
+                }
+        }else{
+            selectedDocId = "empty"
         }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
+
 
 }
 

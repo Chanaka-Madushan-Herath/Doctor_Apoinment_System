@@ -8,8 +8,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_bookings">My Bookings</string>
+    <string name="menu_profile">Profile</string>
     <string name="menu_signin">Sign In</string>
     <string name="menu_signup">Sign Up</string>
     <string name="menu_login">Login</string>
@@ -48,4 +48,11 @@
     <string name="email_address">Email Address</string>
     <string name="name">Name</string>
     <string name="patient_name">Patient Name</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="tp">TP</string>
+    <string name="email">Email</string>
+    <string name="patient_s_details">Patient\'s Details</string>
+    <string name="session_list">Session List</string>
+    <string name="book_session">Book Session</string>
+    <string name="view_details">Details</string>
 </resources>

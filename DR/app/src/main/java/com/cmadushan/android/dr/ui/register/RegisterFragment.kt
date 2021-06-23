@@ -18,7 +18,6 @@ import androidx.navigation.fragment.findNavController
 import com.cmadushan.android.dr.MainActivity
 import com.cmadushan.android.dr.R
 import com.cmadushan.android.dr.ui.login.LoginFragmentDirections
-import com.cmadushan.android.dr.user
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore

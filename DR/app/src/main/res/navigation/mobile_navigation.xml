@@ -19,10 +19,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.cmadushan.android.dr.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_profile"
+        android:name="com.cmadushan.android.dr.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/nav_login"
         android:name="com.cmadushan.android.dr.ui.login.LoginFragment"
@@ -47,14 +47,18 @@
             app:destination="@id/nav_home" />
     </fragment>
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.cmadushan.android.dr.ui.gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_myBookings"
+        android:name="com.cmadushan.android.dr.ui.myBookings.MyBookingsFragment"
+        android:label="@string/my_bookings"
+        tools:layout="@layout/fragment_my_bookings" >
+        <action
+            android:id="@+id/action_nav_myBookings_to_viewDetailsFragment"
+            app:destination="@id/viewDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sessionListFragment"
         android:name="com.cmadushan.android.dr.ui.sessionlist.SessionListFragment"
-        android:label="fragment_session_list"
+        android:label="@string/session_list"
         tools:layout="@layout/fragment_session_list" >
         <argument
             android:name="DoctorId"
@@ -62,20 +66,29 @@
         <action
             android:id="@+id/action_sessionListFragment_to_bookSessionFragment"
             app:destination="@id/bookSessionFragment" />
-        <action
-            android:id="@+id/action_sessionListFragment_to_nav_home"
-            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/bookSessionFragment"
         android:name="com.cmadushan.android.dr.ui.bookSession.BookSessionFragment"
-        android:label="fragment_book_session"
+        android:label="@string/book_session"
         tools:layout="@layout/fragment_book_session" >
         <argument
             android:name="details"
             app:argType="com.cmadushan.android.dr.ui.sessionlist.SessionDetails" />
         <action
             android:id="@+id/action_bookSessionFragment_to_nav_home"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewDetailsFragment"
+        android:name="com.cmadushan.android.dr.ui.myBookings.ViewDetailsFragment"
+        android:label="@string/view_details"
+        tools:layout="@layout/fragment_view_details" >
+        <argument
+            android:name="BookingDetails"
+            app:argType="com.cmadushan.android.dr.ui.myBookings.BookingDetails" />
     </fragment>
 </navigation>
