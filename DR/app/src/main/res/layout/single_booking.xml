@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#DFFFFFFF">
 
     <TableRow
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:layout_margin="1dp"
             android:layout_marginStart="3dp"
             android:layout_marginLeft="3dp"
-            android:background="#E4FDFBE6"
+            android:background="#0D818080"
             android:gravity="center"
             android:textColor="#000000" />
 
@@ -30,7 +31,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
-            android:background="#E4FDFBE6"
+            android:background="#0D818080"
             android:textColor="#000000" />
 
         <TextView
@@ -38,7 +39,7 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
-            android:background="#E4FDFBE6"
+            android:background="#0D818080"
             android:gravity="center"
             android:textColor="#000000" />
 
@@ -49,7 +50,7 @@
             android:layout_margin="1dp"
             android:layout_marginEnd="3dp"
             android:layout_marginRight="3dp"
-            android:background="#E4FDFBE6"
+            android:background="#0D818080"
             android:gravity="center"
             android:textColor="#000000" />
     </TableRow>

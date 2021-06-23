@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="#DFFFFFFF"
     tools:context=".ui.myBookings.ViewDetailsFragment">
 
     <ImageView
@@ -16,12 +17,12 @@
         android:layout_marginEnd="131dp"
         android:layout_marginRight="131dp"
         android:layout_marginBottom="560dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/doctor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/dname"
@@ -84,7 +85,9 @@
         android:layout_marginRight="250dp"
         android:layout_marginBottom="422dp"
         android:text="@string/patient_s_details"
-        android:textSize="16sp"
+        android:textColor="#03108F"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.001"
@@ -101,6 +104,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="300dp"
         android:text="@string/name"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -128,6 +132,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="270dp"
         android:text="@string/address"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -155,6 +160,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="240dp"
         android:text="@string/email"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -182,6 +188,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="210dp"
         android:text="@string/tp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />

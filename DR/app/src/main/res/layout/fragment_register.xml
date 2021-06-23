@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.register.RegisterFragment" >
+    android:layout_height="wrap_content"
+    android:background="#DFFFFFFF"
+    tools:context=".ui.register.RegisterFragment">
 
     <EditText
         android:id="@+id/name"
@@ -40,6 +40,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
@@ -104,6 +105,7 @@
         android:layout_marginBottom="64dp"
         android:enabled="true"
         android:text="@string/action_sign_up"
+        app:backgroundTint="#E60C55D5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,19 +130,21 @@
 
     <ImageButton
         android:id="@+id/uploadimage"
-        android:layout_width="136dp"
-        android:layout_height="159dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/ic_menu_gallery"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.423" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
