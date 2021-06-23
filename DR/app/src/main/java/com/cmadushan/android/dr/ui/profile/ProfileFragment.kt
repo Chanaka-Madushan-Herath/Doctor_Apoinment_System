@@ -50,7 +50,7 @@ class ProfileFragment : Fragment() {
           val address =document.getString("Address")
           val tp =document.getString("Tp")
 
-          val editName = view?.findViewById<EditText>(R.id.editName).
+          val editName = view?.findViewById<EditText>(R.id.editName)
           val editAddress = view?.findViewById<EditText>(R.id.editAddress)
           val editEmail = view?.findViewById<EditText>(R.id.editEmail)
          val editTp = view?.findViewById<EditText>(R.id.editTp)
