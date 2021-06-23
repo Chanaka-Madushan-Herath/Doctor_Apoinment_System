@@ -55,4 +55,5 @@
     <string name="session_list">Session List</string>
     <string name="book_session">Book Session</string>
     <string name="view_details">Details</string>
+    <string name="update">Update</string>
 </resources>

@@ -126,7 +126,7 @@ class RegisterFragment : Fragment()  {
 
         db.collection("users").document(id)
             .set(user)
-            .addOnSuccessListener { documentReference -> Log.d("firestore", "DocumentSnapshot added with ID: " + id)
+            .addOnSuccessListener {
                 uploadImage(id)
             }
             .addOnFailureListener { e -> Log.w("firestore", "Error adding document", e) }
