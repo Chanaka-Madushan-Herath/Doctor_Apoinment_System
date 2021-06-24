@@ -56,4 +56,8 @@
     <string name="book_session">Book Session</string>
     <string name="view_details">Details</string>
     <string name="update">Update</string>
+    <string name="reference_number">Reference Number</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="doctor_s_name">Doctor\'s Name</string>
 </resources>

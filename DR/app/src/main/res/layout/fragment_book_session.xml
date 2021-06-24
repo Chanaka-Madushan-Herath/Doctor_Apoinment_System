@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:background="#DFFFFFFF"
     tools:context=".ui.bookSession.BookSessionFragment">
 
@@ -21,8 +22,10 @@
         android:src="@drawable/doctor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.075" />
 
     <TextView
         android:id="@+id/dname"
@@ -30,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="175dp"
         android:layout_marginLeft="175dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="175dp"
         android:layout_marginRight="175dp"
         android:layout_marginBottom="500dp"
@@ -38,7 +42,8 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/specialization"
@@ -46,15 +51,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="175dp"
         android:layout_marginLeft="175dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="175dp"
         android:layout_marginRight="175dp"
-        android:layout_marginBottom="470dp"
         android:textColor="#FF0000"
         android:textSize="18sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dname" />
 
     <TextView
         android:id="@+id/hospital"
@@ -62,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="175dp"
         android:layout_marginLeft="175dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="175dp"
         android:layout_marginRight="175dp"
         android:layout_marginBottom="440dp"
@@ -80,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="175dp"
         android:layout_marginRight="175dp"
         android:layout_marginBottom="390dp"
@@ -97,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="175dp"
         android:layout_marginLeft="175dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="390dp"
@@ -114,16 +120,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="320dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="379dp"
         android:text="@string/appointment_for"
+        android:textColor="#050505"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sessionDate" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -131,32 +137,35 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/sessionDate">
 
         <RadioButton
             android:id="@+id/Yourself"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/yourself" />
+            android:text="@string/yourself"
+            android:textColor="#020202"
+            android:textColorHint="#050505" />
 
         <RadioButton
             android:id="@+id/Other"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/other" />
+            android:text="@string/other"
+            android:textColor="#000000"
+            android:textColorHint="#050505" />
     </RadioGroup>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="382dp"
-        android:layout_height="222dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -175,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=" Name"
+                android:textColor="#050505"
                 android:textSize="16sp" />
 
             <EditText
@@ -183,7 +193,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="Jhon"
+                android:inputType="textPersonName"
+                android:textColor="#070707"
+                android:textColorHint="#95151414" />
 
         </LinearLayout>
 
@@ -198,6 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Address"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <EditText
@@ -206,7 +220,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="125, Kandy, Srilanka"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#95151414" />
 
         </LinearLayout>
 
@@ -221,6 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Email"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <EditText
@@ -229,7 +247,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:hint="example@gmail.com"
+                android:inputType="textEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#95151414" />
 
         </LinearLayout>
 
@@ -244,6 +265,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Phone No"
+                android:textColor="#050505"
                 android:textSize="16sp" />
 
             <EditText
@@ -252,7 +274,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hint="01124563789"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:textColorHint="#95151414" />
 
         </LinearLayout>
 
@@ -271,8 +296,10 @@
         app:backgroundTint="#E60C55D5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.241" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
